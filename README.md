@@ -3,13 +3,20 @@
 ## 1. Research Question
 Does astrology predict how many years a marriage will last? From a project I have done in SEIS 632, I have found through data visualization of divorce records from Xalapa, Mexico that there was no relationship between astrology and divorces: No star sign duos stuck out and most relationships according to astrology should have a "happily ever after." However, I wanted to take this a step further and use a permutation test and bootstrapping to see if the data was by random chance or if in fact there is a relationship between how long a marriage will last and astrology.
 ## 2. Hypothesis
-Overall: There is no relationship between astrological sign and years a couple will stay married.
+* Overall: There is no relationship between astrological sign and years a couple will stay married.
+* Capicorn and Picses Couples: There is no relationship between Pisces and Capicorn couples and years a couple will stay married.
 ## 3. Data Description
 Describe your data source(s):
-* Where it comes from (URL, API, dataset name): Kaggle, Divorce records in Xalapa Mexico between 2000 and 2015: https://www.kaggle.com/code/aagghh/python-vs-astrology-testing-zodiac-predictions?scriptVersionId=47561319&cellId=4
+* Data source: From Kaggle, Divorce records in Xalapa Mexico between 2000 and 2015 (https://www.kaggle.com/code/aagghh/python-vs-astrology-testing-zodiac-predictions?scriptVersionId=47561319&cellId=4)
 * Observation were of straight couples: With each partners date of marriage, date of birth, nationality, place of birth, data of divorce, occupations, salary, voluntary or nessessary divorce, number of children, and custody of children.
-* Number of observations and key variables: Originally with 4,923 obervations that were cut down to 4,374 from the last project. Key variables in this project were were birthdate, years of marriage, 
-* Any filtering, cleaning, or transformation steps: Originally shaved down to 4,374 oberservations due to missign birthdates of one or both partners. Did add in astological sign of a partner based on their birthdate and then combined the couples star sign that disregards star sign (Aires and Gemini or Gemini and Aires would simply be Aires and Gemini). I did add some more columns along the way......
+* Number of observations and key variables: Originally with 4,923 observations that were cut down to 4,374 from the last project. Key variables in this project were were birthdate, years of marriage, 
+* Any filtering, cleaning, or transformation steps:
+  * Originally shaved down to 4,374 oberservations due to missign birthdates of one or both partners
+  * Add in astological sign of a partner based on their birthdate and then combined the couples star sign that disregards star sign (Aires and Gemini or Gemini and Aires would simply be Aires and Gemini).
+* More columns added (not relevent to the null hypothesis, used in other tests)
+  * Age of Marriage of man partner and woman partner (Date of Marriage minus Date of Birth)
+  * Age Gap (Man Partner Age minus Woman Partner Age)
+  * Flagged Couples: One partner was married at less than 18 years of age and the other partner be 2 years older
 ## 4. Methods
 Summarize how you analyzed the data:
 * The test statistic for your permutation test
@@ -26,20 +33,21 @@ Summarize how you analyzed the data:
 ## 5. Results
 Present your main findings:
 * Key summary statistics and visualizations:
-  * 
+  * Histogram of Pisces and Capicorn couples, most values were centered at the observed mean of 15.78 years
 * Observed test statistic and p-value (if applicable)
   * Pisces and Capicorn and the average duration of marriage resulted in a P Value of 0.52
   * Other star sign duos had P Values between 0.43 and 0.53
   * No evidence between average duration of marriage and all star sign duos
 * Bootstrap confidence intervals for relevant metrics
-  * For a Capicorn and Pisces couple, the marriages lasted between 15.71076 and 15.92412 years
+  * The replicated data of marriages were expected to last between 15.71076 and 15.92412 years for a Capicorn and Pisces couple with a 95% confidence interval
 ## 6. Uncertainty Estimation
 Discuss your resampling results:
 * How many resamples you used
-  * 10,000 resamples
+  * 10,000 resamples, taking one value of the 1,000 replicated values
 * What the bootstrap or randomization distributions looked like
-  * Normal distribution with most values around the mean
+  * Normal distribution with most values around the observed mean of 15.78
 * How you interpret the interval estimates
+ * Pisces and Capicorn couples were expected to last between 15.71076 and 15.92412 years
 ## 7. Limitations
 Briefly note any limitations in data, assumptions, or methods, including sources of
 bias or missing data.
@@ -47,7 +55,6 @@ bias or missing data.
 * Does not apply to couples still married, that are seperated, or LGBTQIA+.
 * Possibility of missing records (the entirity of 2015 was not recorded)
 ## 8. References
-List all datasets, tools, libraries, or papers you cited.
+Dataset: https://www.kaggle.com/code/aagghh/python-vs-astrology-testing-zodiac-predictions?scriptVersionId=47561319&cellId=4
+
 ---
-**Reminder:** Your README should be clear enough that someone unfamiliar with your
-work could understand
